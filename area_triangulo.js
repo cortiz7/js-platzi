@@ -1,5 +1,5 @@
-let base = 5;
-let altura = 7;
+let base = 10;
+let altura = 12;
 
 
 
