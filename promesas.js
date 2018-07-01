@@ -1,5 +1,5 @@
 
-function get(URL) {
+/*function get(URL) {
     return new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();
@@ -18,19 +18,21 @@ function get(URL) {
         xhr.open('GET', URL);
         xhr.send(null);
     })
-}
+}*/
 
 
 let luke
-get('https://swapi.co/api/people/1/')
-    .then ((response) => {
-        luke = response        
-        return get(luke.homeworld)
+fetch('https://swapi.co/api/people/1/')
+    .then (response => response.json())
+    .then((json) => {
+        luke = json        
+        return fetch(luke.homeworld)
     })
-    .then ((homeworld) => {
-        luke.homeworld = homeworld        
-        console.log(`${luke.name} nació en el Planeta ${homeworld.name}`)
+    .then (response => response.json())
+    .then ((json) => {
+        luke.homeworld = json        
+        console.log(`${luke.name} nació en el Planeta ${luke.homeworld.name}`)
         const dato = document.getElementById('dato')
-        dato.innerHTML = `${luke.name} nació en el Planeta ${homeworld.name}`
+        dato.innerHTML = `${luke.name} nació en el Planeta ${luke.homeworld.name}`
     })
     .catch(err => console.log(`Request Faile ${err}`))
