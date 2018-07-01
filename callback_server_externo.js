@@ -30,7 +30,7 @@ get('https://swapi.co/api/people/1/', function onResponse(err, luke) {
         if (err) return _handleError(err)
 
         console.log('Request Succeded')
-        console.log('luke', homeworld)
+        console.log('homeworld', homeworld)
         console.log(`${luke.name} nació en el Planeta ${homeworld.name}`)
         const dato = document.getElementById('dato')
         dato.innerHTML = `${luke.name} nació en el Planeta ${homeworld.name}`
