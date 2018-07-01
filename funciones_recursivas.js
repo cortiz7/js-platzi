@@ -1,14 +1,14 @@
 
-function fibonacci(num) {
+let contador = 0
+function fibonacci(num, memoria={}) {
+    contador++
+    if(memoria[num])return memoria[num]
     if (num === 1) return 0
-    if (num === 2) return 1
-
-    return fibonacci(num - 1) + fibonacci(num -2)
-
+    if (num === 2) return 1    
+    
+    return memoria[num] = fibonacci(num - 1, memoria) + fibonacci(num -2, memoria)
 }
 
-fibonacci(1) // 0
-fibonacci(2) // 1
-fibonacci(3) // 1
-fibonacci(4) // 2
-fibonacci(5) // 3
+
+fibonacci(4) // 0
+console.log(contador)
