@@ -2,7 +2,8 @@
 function fibonacci() {
     let a = 0, b = 1     
     return {
-        next: function () {
+        next: function (reset) {
+            if (reset) a = 0, b = 1
             let f = a
             a = b
             b = f + b
